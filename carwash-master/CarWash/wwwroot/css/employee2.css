@@ -1,0 +1,19 @@
+﻿body {
+    background-color: khaki;
+}
+
+section {
+    position: center;
+}
+
+div.card-body {
+    background-color: khaki;
+}
+
+.footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}

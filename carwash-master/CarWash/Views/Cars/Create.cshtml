@@ -1,0 +1,82 @@
+﻿@model CarWash.Models.Car
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="font-family:'Courier New'" class="font-weight-bold">Register your Car</h1>
+
+<section class="view intro-2">
+
+    <div class="mask rgba-stylish-strong h-100 d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto mt-lg-5">
+
+                    <!--Form with header-->
+                    <div class="text-center">
+                        @*<h1 class="display-4 font-weight-bold mb-5 wow fadeInUp"> Wash-It!</h1>*@
+                    </div>
+                    <div class="card wow fadeIn" data-wow-delay="0.3s">
+                        <div class="card-body">
+
+                            <!--Header-->
+                            <div class="form-header purple-gradient">
+                                
+                            </div>
+                            <form asp-action="Create">
+                                <!--Body-->
+
+                                <div class="md-form">
+                                    <label asp-for="CarNo" class="control-label"></label>
+                                    <input asp-for="CarNo" class="form-control" />
+                                    <span asp-validation-for="CarNo" class="text-danger"></span>
+                                </div>
+
+                                <div class="md-form">
+                                    <label asp-for="CarColor" class="control-label"></label>
+                                    <select asp-for="CarColor" class="form-control">
+                                        <option value="Black">Black</option>
+                                        <option value="White">White</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Green">Green</option>
+                                        <option value="Yellow">Yellow</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <span asp-validation-for="CarColor" class="text-danger"></span>
+                                </div>
+                                <div class="md-form">
+                                    <label asp-for="CarType" class="control-label"></label>
+                                    <select asp-for="CarType" class="form-control">
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="MPV">MPV</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="Hatchback">Hatchback</option>
+                                        <option value="Convertible">Convertible</option>
+                                    </select>
+                                    <span asp-validation-for="CarType" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="form-group form-check">
+                                    <input type="submit" value="Register" class="btn btn-primary" />
+                                    <a asp-action="Index" class="btn btn-primary">List of Car</a>
+                                </div>
+ 
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--/Form with header-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

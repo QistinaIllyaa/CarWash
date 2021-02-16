@@ -1,0 +1,567 @@
+﻿@model CarWash.Models.Reservation
+@{
+    int carId = ViewBag.CarId;
+    ViewData["Title"] = "Reservations";
+}
+<style type="text/css">
+
+    #map-canvas {
+        width: 100%;
+        height: 350px;
+        margin: 0px 0 0px 0;
+        border: 10px solid #FFF;
+    }
+</style>
+
+<h1 style="font-family:'Courier New'" class="font-weight-bold">Reserve Now!</h1>
+
+<!-- Description box -->
+<div class="container">
+    <p>Checkout the price when you hit the button below</p>
+    <button class="btn btn-dark form-inline" id="sedan">Sedan</button>
+    <div class="form" id="pricesedan">
+        <div class="card-deck">
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type A (Rm 10)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry Only</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type B (Rm 15)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p> Amortires</p>
+                    <p> Vacuum</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type C (Rm 20)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p>Wash-Dry</p>
+                    <p>Amortires</p>
+                    <p>Vacuum</p>
+                    <p>EngineWash</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Add-On List</p>
+                </div>
+                <div class="card-body text-center">
+                    <p>Vacuum (Rm 2)</p>
+                    <p>Polish (Rm 5)</p>
+                    <p>Freshner (Rm 2)</p>
+                    <p>Amor Tires (Rm 2)</p>
+                    <p> Enginewash (Rm 5)</p>
+                    <p>Leatherconditioner (Rm 4)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-dark form-inline" id="mpv">MPV</button>
+    <div class="form" id="pricempv">
+        <div class="card-deck">
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type A (Rm 12)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry Only</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type B (Rm 17)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p> Amortires</p>
+                    <p> Vacuum</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type C (Rm 21)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p>Amortires</p>
+                    <p>Vacuum</p>
+                    <p>EngineWash</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Add-On List</p>
+                </div>
+                <div class="card-body text-center">
+                    <p>Vacuum (Rm 2)</p>
+                    <p>Polish (Rm 5)</p>
+                    <p>Freshner (Rm 2)</p>
+                    <p>Amor Tires (Rm 3)</p>
+                    <p> Enginewash (Rm 5)</p>
+                    <p>Leatherconditioner (Rm 5)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-dark form-inline" id="suv">SUV</button>
+    <div class="form" id="pricesuv">
+        <div class="card-deck">
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type A (Rm 14)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry Only</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type B (Rm 20)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p> Amortires</p>
+                    <p> Vacuum</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type C (Rm 25)</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p>Amortires</p>
+                    <p>Vacuum</p>
+                    <p>EngineWash</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Add-On List</p>
+                </div>
+                <div class="card-body text-center">
+                    <p>Vacuum (Rm 4)</p>
+                    <p>Polish (Rm 8)</p>
+                    <p>Freshner (Rm 2)</p>
+                    <p>Amor Tires (Rm 2)</p>
+                    <p> Enginewash (Rm 5)</p>
+                    <p>Leatherconditioner (Rm 5)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-dark form-inline" id="hatchback">Hatchback</button>
+    <div class="form" id="pricehatchback">
+        <div class="card-deck">
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type A</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry Only</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type B</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p> Amortires</p>
+                    <p> Vacuum</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type C</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p>Amortires</p>
+                    <p>Vacuum</p>
+                    <p>EngineWash</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Add-On List</p>
+                </div>
+                <div class="card-body text-center">
+                    <p>Vacuum (Rm 2)</p>
+                    <p>Polish (Rm 5)</p>
+                    <p>Freshner (Rm 2)</p>
+                    <p>Amor Tires (Rm 2)</p>
+                    <p> Enginewash (Rm 5)</p>
+                    <p>Leatherconditioner (Rm 4)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-dark form-inline" id="convertible">Convertible</button>
+    <div class="form" id="priceconvertible">
+        <div class="card-deck">
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type A</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry Only</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type B</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p> Amortires</p>
+                    <p> Vacuum</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Type C</p>
+                </div>
+                <div class="card-body text-center">
+                    <p> Wash-Dry</p>
+                    <p>Amortires</p>
+                    <p>Vacuum</p>
+                    <p>EngineWash</p>
+                </div>
+            </div>
+            <div class="card m-4">
+                <div class="card-header">
+                    <p>Add-On List</p>
+                </div>
+                <div class="card-body text-center">
+                    <p>Vacuum (Rm 2)</p>
+                    <p>Polish (Rm 8)</p>
+                    <p>Freshner (Rm 2)</p>
+                    <p>Amor Tires (Rm 2)</p>
+                    <p> Enginewash (Rm 5)</p>
+                    <p>Leatherconditioner (Rm 6)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Form -->
+<br />
+<div class="container">
+    <button class="btn btn-info" id="reserve">Reserve Now!</button>
+</div>
+<section class="view intro-2">
+    <div class="mask rgba-stylish-strong h-100 d-flex justify-content-center align-items-center">
+        <div class="container" id="createform">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-11 col-sm-12 mx-auto ">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input asp-for="CarId" type="hidden" value="@carId" />
+
+                        <div class="container" style="background-color:#e3f2fd;">
+                            <div class="form-header purple-gradient">
+                                <h3><i class="fas fa-user mt-2 mb-2"></i></h3>
+                            </div>
+                            <!-- Trigger the modal with a button -->
+                            @*<button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#types">Choose Type of Services</button>*@
+                            <div class="md-form pt-3">
+                                <label class="font-weight-bold">Types:</label>
+                                <select class="form-control" asp-for="TypesId" required>
+                                </select>
+                            </div>
+                            <br />
+                            <label class="font-weight-bold">Add-On</label>
+                            <div id="vacuum" class="md-form form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Vacuum" /> @Html.DisplayNameFor(model => model.Vacuum)
+                                </label>
+                            </div>
+
+                            <div id="polish" class="md-form form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Polish" /> @Html.DisplayNameFor(model => model.Polish)
+                                </label>
+                            </div>
+                            <div id="fresh" class="md-form form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Freshner" /> @Html.DisplayNameFor(model => model.Freshner)
+                                </label>
+                            </div>
+                            <div id="amor" class="md-form form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Amortires" /> @Html.DisplayNameFor(model => model.Amortires)
+                                </label>
+                            </div>
+                            <div id="enginewash" class="md-form form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Enginewash" /> @Html.DisplayNameFor(model => model.Enginewash)
+                                </label>
+                            </div>
+                            <div id="leatherconditioner" class="md-form form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Leatherconditioner" /> @Html.DisplayNameFor(model => model.Leatherconditioner)
+                                </label>
+                            </div>
+                            <br />
+                            <div class="md-form">
+                                <label asp-for="Address" class="control-label font-weight-bold"></label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <br />
+                            <div class="md-form">
+                                <label class="font-weight-bold">Search</label>
+                                <div class="input-group">
+                                    <input type="text" id="SearchMap" name="SearchMap" placeholder="Type in an address" class="form-control" /><br />
+                                    <span class="input-group-btn">
+                                        <button id="find" class="btn btn-primary " type="button">Find</button>
+
+                                        <button id="reset" class="btn btn-warning" type="button">Reset</button>
+                                    </span>
+                                </div>
+                                <span class="help-block">Enter address and click Find button. Drag the marker to refine the location position</span>
+                            </div>
+
+                            <br />
+                            <div class="md-form">
+                                <label class="font-weight-bold">Map</label>
+                                <div id="map-canvas"></div>
+                            </div>
+
+                            <br />
+                            <div class="md-form">
+                                <label class="font-weight-bold"> Latitude:</label>
+                                <input asp-for="Latitude" type="text" class="form-control " data_geo="lat" readonly />
+                            </div>
+                            <div class="md-form">
+                                <label class="font-weight-bold"> Longitude:</label>
+                                <input asp-for="Longitude" type="text" class="form-control " data_geo="lng" readonly />
+                            </div>
+
+                            <br />
+                            <div class="md-form">
+                                <label asp-for="Date" class="control-label font-weight-bold"></label>
+                                <input asp-for="Date" class="form-control" required />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                            <br />
+                            <div class="md-form">
+                                <label asp-for="Day" class="control-label font-weight-bold"></label>
+                                <select asp-for="Day" class="form-control">
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                                <span asp-validation-for="Day" class="text-danger"></span>
+                            </div>
+                            <div class="md-form">
+
+                                <input type="hidden" name="Answer" value="Pending" asp-for="Answer" class="form-control" checked />
+                                <span asp-validation-for="Answer" class="text-danger"></span>
+                            </div>
+                            <div class="md-form">
+
+                                <input type="hidden" name="Payment" value="Pending" asp-for="Payment" checked />
+                                <span asp-validation-for="Payment" class="text-danger"></span>
+                            </div>
+
+                            <div id="map"></div>
+                            <div class="modal-footer">
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#pricesedan").hide();
+            $("#sedan").click(function () {
+                $("#pricesedan").toggle();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#pricempv").hide();
+            $("#mpv").click(function () {
+                $("#pricempv").toggle();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#pricesuv").hide();
+            $("#suv").click(function () {
+                $("#pricesuv").toggle();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#pricehatchback").hide();
+            $("#hatchback").click(function () {
+                $("#pricehatchback").toggle();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#priceconvertible").hide();
+            $("#convertible").click(function () {
+                $("#priceconvertible").toggle();
+            });
+        });
+
+        $(document).ready(function () {
+            $("#createform").hide();
+            $("#reserve").click(function () {
+                $("#createform").toggle();
+            });
+        });
+
+        $(document).ready(function () {
+            $('#myBtn').change(function () {
+                $('#TypesId').modal('show');
+            });
+            $('#myBtn').change(function () {
+                $('#TypesId').modal('hide');
+            });
+        });
+
+        $(document).ready(function () {
+            $('#TypesId').change(function () {
+                var selectedValue = $(this).val();
+                if (selectedValue == "22") {
+                    $('#enginewash').hide();
+                    $('#leatherconditioner').hide();
+                    $('#vacuum').show();
+                    $('#freshner').show();
+                    $('#polish').show();
+                    $('#amor').show();
+                }
+                else if (selectedValue == "23") {
+                    $('#vacuum').hide();
+                    $('#amor').hide();
+                    $('#leatherconditioner').show();
+                    $('#freshner').show();
+                    $('#polish').show();
+                    $('#enginewash').show();
+                }
+                else {
+                    $('#vacuum').hide();
+                    $('#amor').hide();
+                    $('#enginewash').hide();
+                    $('#leatherconditioner').show();
+                    $('#freshner').show();
+                    $('#polish').show();
+                }
+            });
+        });
+        //$(document).ready(function () {
+        //    $('#SearchMap').change(function() {
+        //        $('#Address').val($(this).val());
+        //    });
+        //});
+
+
+        $(document).ready(function () {
+            $('#TypesId').select2({
+                allowClear: true,
+                placeholder: 'Select',
+                ajax: {
+                    url: '/types/select2',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            term: params.term,
+                            page: params.page || 1
+                        };
+                    }
+                }
+            });
+        });
+
+
+
+
+        function InitGeoComplete() {
+            var searchMap = $("#SearchMap");
+            var reset = $("#reset");
+
+
+            reset.hide();
+
+            searchMap.geocomplete({
+                map: "#map-canvas",
+                details: "data-geo",
+                mapOptions: {
+                    scrollwheel: true
+                },
+                markerOptions: {
+                    draggable: true
+                }
+            });
+
+            searchMap.bind("geocode:result", function (event, result) {
+                if (result.geometry.location) {
+                    $("#Latitude").val(result.geometry.location.lat());
+                    $("#Longitude").val(result.geometry.location.lng());
+                    $("#reset").show();
+                }
+            });
+
+            searchMap.bind("geocode:dragged", function (event, latLng) {
+                $("#Latitude").val(latLng.lat());
+                $("#Longitude").val(latLng.lng());
+                $("#reset").show();
+            });
+
+
+            reset.click(function () {
+                $("#SearchMap").geocomplete("resetMarker");
+                $("#reset").hide();
+                $('#find').trigger('click');
+                return false;
+            });
+
+            $('#SearchMap').change(function () {
+                $('#Address').val($(this).val());
+            });
+
+            $("#find").click(function () {
+                searchMap.trigger("geocode");
+            }).click();
+
+            google.maps.event.addListener($("#map-canvas"), 'mouseout', function (event) {
+                this.setOptions({ scrollwheel: false });
+            });
+
+            searchMap.geocomplete("find", "Kuala Lumpur, Malaysia");
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_c1XtMim0AgibHcCfpKCH6JSYlaRS-g&libraries=places&callback=InitGeoComplete"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.js"></script>
+}
+

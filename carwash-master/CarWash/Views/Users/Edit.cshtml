@@ -1,0 +1,56 @@
+﻿
+@model CarWash.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Types</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Password" />
+            <input type="hidden" asp-for="Email" />
+            <div class="form-group" id="form">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="form">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="form">
+                <label>Phone Number</label>
+                <input asp-for="CarNo" class="form-control" />
+                <span asp-validation-for="CarNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" id="submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div class="container" id="update">
+        <a>You editing has been save.</a>
+    </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+              $("#update").hide();
+            $("#submit").click(function () {
+                $("#update").show();
+                
+            });
+        });
+    </script>
+}

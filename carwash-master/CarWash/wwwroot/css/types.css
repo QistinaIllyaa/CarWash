@@ -1,0 +1,18 @@
+﻿body {
+    background-color: white;
+}
+/*.card {
+    background-color: cornsilk;
+    max-width: 100%;
+    height: auto;
+}*/
+.footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+.card-header {
+    background-color: hotpink;
+}

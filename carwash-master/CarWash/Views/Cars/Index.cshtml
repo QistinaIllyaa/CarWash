@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CarWash.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+
+    <h1 style="font-family:'Courier New'" class="font-weight-bold">Choose your Car</h1>
+
+
+
+    <a class="btn btn-outline-dark " asp-action="Create" >Create New</a>
+
+
+<table class="table">
+    @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarColor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>*@
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+        <div class="col col-lg-3">
+            <div class="card m-3">
+                <div class="card-header">
+                    <a asp-controller="Reservations" asp-action="Create" asp-route-carid="@item.Id" class="btn btn-rounded btn-outline-white">@Html.DisplayFor(modelItem => item.CarNo)</a>
+                </div>
+                <img class="card-img-top" src="~/images/car.png" />
+                <div class="card-body text-center">
+                    <p> @Html.DisplayFor(modelItem => item.CarType)</p>
+                    <hr>
+                    <p> @Html.DisplayFor(modelItem => item.CarColor)</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</table>

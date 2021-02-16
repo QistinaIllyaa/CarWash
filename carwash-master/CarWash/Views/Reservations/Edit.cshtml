@@ -1,0 +1,395 @@
+﻿@model CarWash.Models.Reservation
+
+<h3 class="pt-4 font-weight-bold" style="font-family:'Courier New'">Confirmation</h3>
+
+@if (User.IsInRole("Administrator"))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label font-weight-bold"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Latitude" class="control-label font-weight-bold"></label>
+                    <input asp-for="Latitude" class="form-control" readonly />
+                    <span asp-validation-for="Latitude" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Longitude" class="control-label font-weight-bold"></label>
+                    <input asp-for="Longitude" class="form-control" readonly />
+                    <span asp-validation-for="Longitude" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label asp-for="Date" class="control-label font-weight-bold"></label>
+                        <input asp-for="Date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="Day" class="control-label font-weight-bold"></label>
+                        <input asp-for="Day" class="form-control" />
+                        <span asp-validation-for="Day" class="text-danger"></span>
+                    </div>
+                </div> <br />
+                <div class="form-group">
+                    <label class="control-label font-weight-bold">Add-On</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <div class="col">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Vacuum" /> @Html.DisplayNameFor(model => model.Vacuum)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <div class="col">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Leatherconditioner" /> @Html.DisplayNameFor(model => model.Leatherconditioner)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <div class="col">
+                        <label class="form-check-label ">
+                            <input class="form-check-input" asp-for="Polish" /> @Html.DisplayNameFor(model => model.Polish)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <div class="col">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Freshner" /> @Html.DisplayNameFor(model => model.Freshner)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <div class="col">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Amortires" /> @Html.DisplayNameFor(model => model.Amortires)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    <div class="col">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="Enginewash" /> @Html.DisplayNameFor(model => model.Enginewash)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label asp-for="CarId" class="control-label font-weight-bold"> Plate Number</label>
+                        <select asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></select>
+                        <span asp-validation-for="CarId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col">
+                        <label asp-for="TypesId" class="control-label font-weight-bold">Type</label>
+                        <select asp-for="TypesId" class="form-control" asp-items="ViewBag.TypesId"></select>
+                        <span asp-validation-for="TypesId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col">
+                        <label asp-for="Amount" class="control-label font-weight-bold">Price</label>
+                        <input asp-for="Amount" class="form-control" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                </div> <br />
+                <div class="form-group">
+                    <label class="control-label font-weight-bold input-group-lg">Reason to cancel the booking.</label><br />
+                    <input name="Comment" asp-for="Comment" class="form-control" />
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label asp-for="Answer" class="control-label font-weight-bold">Confirmation</label><br />
+                        <input type="radio" name="Answer" value="Accept" asp-for="Answer" /> Accept <br />
+                        <input type="radio" name="Answer" value="Cancel" asp-for="Answer" /> Cancel  <br />
+                        <input type="radio" name="Answer" value="Cancelation has been decline" asp-for="Answer" /> Decline
+                        <span asp-validation-for="Answer" class="text-danger"></span>
+                    </div>
+
+                    <div class="col">
+                        <label asp-for="Payment" class="control-label font-weight-bold"></label><br />
+                        <input type="radio" name="Payment" value="Paid" asp-for="Payment" /> Pay <br />
+                        <input type="radio" name="Payment" value="Void" asp-for="Payment" /> Void
+                        <span asp-validation-for="Payment" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+}
+
+else if (User.IsInRole("Staff"))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label font-weight-bold"></label>
+                    <input asp-for="Address" class="form-control" readonly />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Latitude" class="control-label font-weight-bold"></label>
+                    <input asp-for="Latitude" class="form-control" readonly />
+                    <span asp-validation-for="Latitude" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Longitude" class="control-label font-weight-bold"></label>
+                    <input asp-for="Longitude" class="form-control" readonly />
+                    <span asp-validation-for="Longitude" class="text-danger"></span>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label asp-for="Date" class="control-label font-weight-bold"></label>
+                        <input asp-for="Date" class="form-control" readonly />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="Day" class="control-label font-weight-bold"></label>
+                        <input asp-for="Day" class="form-control" readonly />
+                        <span asp-validation-for="Day" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                       <div class="form-row">
+                           <div class="col">
+
+                               <input type="hidden" asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></input>
+                               <span asp-validation-for="CarId" class="text-danger"></span>
+                           </div>
+
+                           <div class="col">
+
+                               <input type="hidden" asp-for="TypesId" class="form-control" asp-items="ViewBag.TypesId"></input>
+                               <span asp-validation-for="TypesId" class="text-danger"></span>
+                           </div>
+                           <div class="form-group form-check">
+                               <div class="col">
+                                   <label class="form-check-label">
+                                       <input type="hidden" class="form-check-input" asp-for="Vacuum" />
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group form-check">
+                               <div class="col">
+                                   <label class="form-check-label">
+                                       <input type="hidden" class="form-check-input" asp-for="Leatherconditioner" />
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group form-check">
+                               <div class="col">
+                                   <label class="form-check-label ">
+                                       <input type="hidden" class="form-check-input" asp-for="Polish" />
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group form-check">
+                               <div class="col">
+                                   <label class="form-check-label">
+                                       <input type="hidden" class="form-check-input" asp-for="Freshner" />
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group form-check">
+                               <div class="col">
+                                   <label class="form-check-label">
+                                       <input type="hidden" class="form-check-input" asp-for="Amortires" />
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group form-check">
+                               <div class="col">
+                                   <label class="form-check-label">
+                                       <input type="hidden" class="form-check-input" asp-for="Enginewash" />
+                                   </label>
+                               </div>
+                           </div>
+                           <div class="form-group">
+
+                               <input type="hidden" name="Answer" value="Accept" asp-for="Answer" />
+                               <input type="hidden" name="Answer" value="Cancel" asp-for="Answer" />
+                               <span asp-validation-for="Answer" class="text-danger"></span>
+                           </div>
+                       </div>
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label font-weight-bold">Price</label>
+                    <input asp-for="Amount" class="form-control" readonly />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Payment" class="control-label font-weight-bold"></label><br />
+                    <input type="radio" name="Payment" value="Paid" asp-for="Payment" /> Pay <br />
+                    <input type="radio" name="Payment" value="Void" asp-for="Payment" /> Void
+                    <span asp-validation-for="Payment" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+}
+
+else
+{ <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="hidden" asp-for="Latitude" class="form-control" readonly />
+                        <span asp-validation-for="Latitude" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="hidden" asp-for="Longitude" class="form-control" readonly />
+                        <span asp-validation-for="Longitude" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col">
+                            <label class="form-check-label">
+                                <input type="hidden" class="form-check-input" asp-for="Vacuum" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col">
+                            <label class="form-check-label">
+                                <input type="hidden" class="form-check-input" asp-for="Leatherconditioner" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col">
+                            <label class="form-check-label ">
+                                <input type="hidden" class="form-check-input" asp-for="Polish" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col">
+                            <label class="form-check-label">
+                                <input type="hidden" class="form-check-input" asp-for="Freshner" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col">
+                            <label class="form-check-label">
+                                <input type="hidden" class="form-check-input" asp-for="Amortires" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <div class="col">
+                            <label class="form-check-label">
+                                <input type="hidden" class="form-check-input" asp-for="Enginewash" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <input type="hidden" asp-for="Date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+
+                        <input type="hidden" asp-for="Day" class="form-control" />
+                        <span asp-validation-for="Day" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="Payment" value="Paid" asp-for="Payment" />
+                        <span asp-validation-for="Payment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="hidden" asp-for="Amount" class="form-control" readonly />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <input type="hidden" asp-for="CarId" class="form-control" asp-items="ViewBag.CarId"></input>
+                        <span asp-validation-for="CarId" class="text-danger"></span>
+                    </div>
+
+                    <div class="col">
+                        <input type="hidden" asp-for="TypesId" class="form-control" asp-items="ViewBag.TypesId"></input>
+                        <span asp-validation-for="TypesId" class="text-danger"></span>
+                    </div>
+
+                </div> <br />
+                <div class="form-group">
+                    
+
+                    <div class="card-body" style="background-color:#bbdefb;">
+                        <label class="control-label font-weight-bold"> Are you sure you want to cancel?</label><br />
+                        <div class="form-group">
+                            <label class="control-label font-weight-bold input-group-lg">Please state why you want to cancel the booking.</label><br />
+                            <input name="Comment" asp-for="Comment" class="form-control" />
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary btn-group float-lg-right" data-toggle="modal" data-target="#exampleModal">
+                            Yes
+                        </button>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cancelation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="control-label font-weight-bold">I would like to cancel my booking.</label><br />
+                                        <input type="radio" name="Answer" value="Request for cancelation" asp-for="Answer" /> Yes.
+                                        <span asp-validation-for="Answer" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+}
+
+

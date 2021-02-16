@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CarWash.Models.Reservation>
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<br />
+<div>
+    <h1 style="font-family:'Courier New'" class="font-weight-bold">History</h1>
+</div>
+
+
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        <div class="col col-lg-3">
+           
+                <div class="card m-3">
+
+                    <h5 class="card-header" data-toggle="tooltip" data-placement="right" title="@Html.DisplayFor(modelItem => item.Id)"> @Html.DisplayFor(modelItem => item.Car.CarNo)</h5>
+                    <div class="text-center"> @Html.DisplayFor(modelItem => item.Date) <br /> @Html.DisplayFor(modelItem => item.Day)</div>
+
+
+
+                    <div class="modal-body">
+                        <div class="card-body">
+                            <a class="font-weight-bold">Address :</a> <p> @Html.DisplayFor(modelItem => item.Address)</p>
+
+                            <a class="font-weight-bold">Type :</a> <p>@Html.DisplayFor(modelItem => item.Types.Services)</p>
+                            <a class="font-weight-bold">Add-On :</a>
+                            <p>
+                                @Html.DisplayFor(modelItem => item.Vacuum) Vacuum <br />
+                                @Html.DisplayFor(modelItem => item.Leatherconditioner) Leather Conditioner <br />
+                                @Html.DisplayFor(modelItem => item.Polish) Polish <br />
+                                @Html.DisplayFor(modelItem => item.Freshner) Freshner <br />
+                                @Html.DisplayFor(modelItem => item.Amortires) Amortires <br />
+                                @Html.DisplayFor(modelItem => item.Enginewash) Engine Wash <br />
+                            </p>
+
+                            <a class="font-weight-bold"> Price :</a> <p>  @Html.DisplayFor(modelItem => item.Amount)</p>
+                            <a class="font-weight-bold"> Confirmation :</a> <p> @Html.DisplayFor(modelItem => item.Answer)</p>
+                            <a class="font-weight-bold">  Payment :</a> <p> @Html.DisplayFor(modelItem => item.Payment)</p>
+                            <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Cancel Booking</a>
+                            @*<a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        </div>
+                        @* hide for staff/admin only*@
+
+
+                    </div>
+                    @*@if (User.IsInRole("Administrator"))
+                        {
+                            <td>
+                                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                            </td>
+                        }
+                        else if (User.IsInRole("Staff"))
+                        {
+                            <td>
+                                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                        }*@
+                </div>
+            </div>
+
+
+
+            }
+
+
+
+        </div>
+
+
+
+
+        @section scripts {
+            <script>
+
+
+
+            </script>
+        }

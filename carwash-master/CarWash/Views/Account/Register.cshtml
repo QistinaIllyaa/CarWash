@@ -1,0 +1,71 @@
+﻿@model CarWash.Models.UserRegistrationModel
+    <div class="container my-5 z-depth-1">
+
+
+        <!--Section: Content-->
+        <section class="dark-grey-text">
+
+            <div class="row pr-lg-5">
+                <div class="col-md-7 mb-4">
+                    <h3>Register Now!</h3>
+                    <div class="view">
+                        <img src="https://mdbootstrap.com/img/illustrations/app-user-colour.svg" class="img-fluid" alt="smaple image">
+                    </div>
+
+                </div>
+                <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto align-items-center">
+                    <div>
+
+                        <form asp-action="Register">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Username" class="control-label"></label>
+                                <input asp-for="Username" class="form-control" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Phone Number</label>
+                                <input asp-for="CarNo" class="form-control" />
+                                <span asp-validation-for="CarNo" class="text-danger"></span>
+                            </div>
+                            
+
+
+
+                            <div class="form-group text-center">
+                                <input type="submit" value="Register" class="btn btn-outline-dark btn-block" />
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!--Section: Content-->
+
+
+    </div>
+   
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

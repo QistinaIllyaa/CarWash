@@ -1,0 +1,212 @@
+﻿@model IEnumerable<CarWash.Models.Reservation>
+
+
+@if (User.IsInRole("Administrator"))
+{
+
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="pt-3 col-md-12">
+                <a class="btn btn-outline-dark" asp-action="Create">Create New</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-3 table-responsive-xl">
+
+        <table class="table">
+            <thead style="background-color:lightskyblue;">
+                <tr>
+                    <th>
+                       @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Car)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Types)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+</th>
+                    <th>
+                        Add-On
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Answer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Payment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Comment)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="background-color:white;">
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Car.CarNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Types.Services)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address) <br />
+                            <a class="font-weight-bold">@Html.DisplayFor(modelItem => item.Latitude) , @Html.DisplayFor(modelItem => item.Longitude)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                            @Html.DisplayFor(modelItem => item.Day)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vacuum) Vacuum <br />
+                            @Html.DisplayFor(modelItem => item.Leatherconditioner) Leather Conditioner <br />
+                            @Html.DisplayFor(modelItem => item.Polish) Polish <br />
+                            @Html.DisplayFor(modelItem => item.Freshner) Freshner <br />
+                            @Html.DisplayFor(modelItem => item.Amortires) Amortires <br />
+                            @Html.DisplayFor(modelItem => item.Enginewash) Engine Wash <br />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Answer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Payment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Comment)
+                        </td>
+                        <td>
+                            <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Confirmation</a> <br /><br />
+                            <a class="btn btn-info form-inline" asp-action="Details" asp-route-id="@item.Id">Details</a> <br /><br />
+                            <a class="btn btn-warning form-inline" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else if (User.IsInRole("Staff"))
+{
+    <div class="p-3 table-responsive-xl">
+
+        <table class="table">
+            <thead style="background-color:lightblue;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Car)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Types)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        Add-On
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Answer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Payment)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="background-color:white;">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Car.CarNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Types.Services)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address) <br />
+                            <a class="font-weight-bold">@Html.DisplayFor(modelItem => item.Latitude) , @Html.DisplayFor(modelItem => item.Longitude)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                            @Html.DisplayFor(modelItem => item.Day)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vacuum) Vacuum <br />
+                            @Html.DisplayFor(modelItem => item.Leatherconditioner) Leather Conditioner <br />
+                            @Html.DisplayFor(modelItem => item.Polish) Polish <br />
+                            @Html.DisplayFor(modelItem => item.Freshner) Freshner <br />
+                            @Html.DisplayFor(modelItem => item.Amortires) Amortires <br />
+                            @Html.DisplayFor(modelItem => item.Enginewash) Engine Wash <br />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Answer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Payment)
+                        </td>
+
+                        <td>
+                            <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Confirmation</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+
+else
+{
+    <div class="pt-lg-5"></div>
+    <div class="card-body">
+        <p class="text-md-center"> Your request are being process. We will let you know in a short while. </p>
+    </div>
+
+}
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+}

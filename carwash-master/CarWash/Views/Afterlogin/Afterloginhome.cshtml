@@ -1,0 +1,294 @@
+@model CarWash.Models.UserRegistrationModel
+
+<style>
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .footer {
+        padding: 1em;
+        color: white;
+        background-color: black;
+        clear: left;
+        text-align: center;
+    }
+
+    .card {
+        margin: 1rem auto;
+        position: relative;
+    }
+
+    .card-body {
+        z-index: 2;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+</style>
+
+
+@if (User.IsInRole("Administrator"))
+{
+    <div class="container-fluid text-center">
+        <h2></h2>
+        <br>
+        <div class="row">
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Reservations" asp-action="GetReservation">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Reservations</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Users" asp-action="Viewstaff">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Staff</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Users" asp-action="Customer">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Customer</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+        </div>
+        <div class="row">
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Cars" asp-action="Staffindex">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Car</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Types" asp-action="Index">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Types</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+        </div>
+        <br><br>
+    </div>
+
+}
+else if (User.IsInRole("Staff"))
+{
+    <div class="container-fluid text-center">
+        <h2></h2>
+        <br>
+        <div class="row">
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Reservations" asp-action="GetReservation">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Reservations</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+            <!-- Card -->
+            <div class="card" style="max-width: 20rem;">
+                <a asp-controller="Locations" asp-action="Index">
+                    <!-- Card image -->
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+
+                    <!-- Card content -->
+                    <div class="card-body text-dark rgba-black-light p-2">
+
+                        <span class="glyphicon glyphicon-off"></span>
+                        <b>Location History</b>
+
+                    </div>
+                </a>
+            </div>
+            <!-- Card -->
+
+        </div>
+        <br><br>
+    </div>
+
+
+}
+else
+{
+    <!-- Main navigation -->
+    <!-- Full Page Intro -->
+    <div id="intro-section" class="view">
+
+        <!-- Mask & flexbox options-->
+        <!--Grid column-->
+        <div class="col-md-12 mb-4 white-text text-center wow fadeIn">
+            <div class="container-fluid text-center">
+                <h2></h2>
+                <br>
+                <a asp-controller="Cars" asp-action="Index" class="btn btn-rounded btn-outline-white">
+                    <img src="~/images/logo.png" /><br />
+                    <i class="fa fa-home btn btn-info"></i> Book Now!
+                </a><br><br>
+            </div>
+        </div>
+        <!--Grid column-->
+    </div>
+    
+    <!--Grid row-->
+<div class="container-fluid text-center py-5" style=" background-color:#0d47a1;">
+    <div class="row">
+        <!-- Container -->
+        <div class="col">
+
+            <!-- Section heading -->
+            <h2 class="h1-responsive font-weight-bold mb-5 text-white">Our Services</h2>
+            <!-- Section description -->
+            <p class="grey-text w-responsive mx-auto mb-5 text-white">
+                We provide vary type of services that our customer can choose with a reasonable price. You just need to stay where you are and we will entertain you by going to you place. Worry no more about no time to wash your car!
+            </p>
+
+            <!-- Grid row -->
+            <div class="row text-center">
+
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                    <!--Featured image-->
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="~/images/IndexCar/wash.jpg" class="img-fluid" alt="Sample project image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!--Excerpt-->
+                    <div class="card-body pb-0">
+                        <h4 class="font-weight-bold my-3 text-white">Basic Services</h4>
+                        <p class=" text-white">
+                            Your car will be wash within 30 minutes depends on the services you chose.
+                        </p>
+
+                    </div>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+                    <!--Featured image-->
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="~/images/IndexCar/vacuum.jpg" class="img-fluid" alt="Sample project image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!--Excerpt-->
+                    <div class="card-body pb-0">
+                        <h4 class="font-weight-bold my-3 text-white">Add-On</h4>
+                        <p class="text-white">
+                            They are varies extra services that customer can choose.
+                        </p>
+
+                    </div>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-6">
+                    <!--Featured image-->
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="~/images/IndexCar/polish.jpg" class="img-fluid" alt="Sample project image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!--Excerpt-->
+                    <div class="card-body pb-0">
+                        <h4 class="font-weight-bold my-3 text-white">Flexible</h4>
+                        <p class="text-white">
+                            You can choose time and date when you would like to have the service.
+                        </p>
+
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Container -->
+    </div>
+</div>
+
+<div class="container-fluid pt-5 pb-4">
+    <div class="row">
+        <div class="col-md-4 ">
+            <img class="img" src="~/images/NewFolder/earth.png" />
+        </div>
+        <div class="col-sm-8">
+            <h4><strong>MISSION</strong></h4> To be there for you<br /><br />
+            <h4><strong>VISSION</strong></h4> To fullfill all your request
+        </div>
+    </div>
+</div>
+
+}
+
+
+
+

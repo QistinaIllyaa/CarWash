@@ -1,0 +1,17 @@
+﻿body {
+    background-image: url('images/background/bgcarwash2.jpg');
+}
+section{
+    position:center;
+}
+/*div.card-body {
+    background-image: url('../images/background/waterab.jpg');
+   // background-image:;
+}*/
+.footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}

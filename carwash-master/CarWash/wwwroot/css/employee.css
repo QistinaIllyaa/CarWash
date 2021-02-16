@@ -1,0 +1,31 @@
+﻿body {
+    //background-image: background-color:lightblue;
+   background-color: wheat;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+.footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+body {
+    background-color:aquamarine;
+    color: black;
+}
+
+header {
+    background-color: aquamarine;
+}
+
+section {
+    background-color: mediumturquoise;
+}
+

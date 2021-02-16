@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CarWash.Models.Location>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="container pt-3 pb-3">
+        <h3 style="font-family:'Courier New'" class="font-weight-bold">Location History</h3>
+        <a class="btn btn-warning float-lg-right form-inline" asp-action="Create">Update Location</a><br />
+    </div>
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                <a class="btn btn-info form-inline" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

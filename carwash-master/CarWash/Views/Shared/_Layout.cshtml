@@ -1,0 +1,95 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CarWash</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css">*@
+    <title>W A S H - I T !</title>
+
+</head>
+
+   
+
+<body>
+    <header>
+
+
+        <nav class="navbar navbar-expand-sm  navbar-light fixed-top scrolling-navbar" style="background-color:#0d47a1;">
+            <div class="container smooth-scroll">
+                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index"><strong>Wash-It!</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav mr-auto">
+                        @*<li class="nav-item active">
+                                <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#team" data-offset="60">Team</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#products" data-offset="60">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#gallery" data-offset="60">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact" data-offset="60">Contact</a>
+                            </li>*@
+                    </ul>
+                    <form class="form-inline">
+                        <div class="md-form my-0">
+                            <a class="nav-link text-md-right text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('images/background/bgcarwash.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <div class="mask rgba-stylish-light">
+                <div class="container h-100 d-flex justify-content-center align-items-center">
+                    <div class="row pt-5 mt-5">
+                        <div class="col-md-12 mb-3 pt-5">
+                            <div class="intro-info-content text-center pt-5">
+                                <h1 class="display-3 text-white mb-5 wow fadeInDown pt-5" data-wow-delay="0.3s">Welcome to <a class="text-black font-weight-bold">Wash-It!</a></h1>
+                                <h5 class="text-uppercase text-white mb-5 mt-1 font-weight-bold wow fadeInDown" data-wow-delay="0.3s">We provide you the best service right where you at! </h5>
+                                <a class="btn btn-lg" asp-area="" asp-controller="Account" asp-action="Login" style="background-color:#ffffff  ;">Book Now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </header>
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+
+    </div>
+    <div class="pt-lg-5">
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - CarWash - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @RenderSection("Scripts", required: false)
+</body>
+</html>

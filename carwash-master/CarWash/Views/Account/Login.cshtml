@@ -1,0 +1,74 @@
+﻿@model CarWash.Models.UserLoginModel
+
+<!--Intro Section-->
+
+<section class="view intro-2">
+
+    <div class="mask rgba-stylish-strong h-100 d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-10 col-sm-12 mx-auto">
+
+                    <!--Form with header-->
+                    <div class="text-center">
+                        <h1 class="display-4 font-weight-bold mb-5 wow fadeInUp"> Wash-It!</h1>
+                    </div>
+                    <div class="card wow fadeIn" data-wow-delay="0.3s">
+                        <div class="card-body" style=" background-image: url('../images/background/bgcarwash2.jpg');">
+
+                            <!--Header-->
+                            <div class="text-center">
+                                <h1>Login</h1>
+                            </div>
+                            <form asp-action="Login" asp-route-retuenUrl="@ViewData["ReturnUrl"]">
+                                <!--Body-->
+
+                                <div class="md-form">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="md-form">
+                                    <label asp-for="Password" class="control-label"></label>
+                                    <input asp-for="Password" class="form-control" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                                    </label>
+                                </div>
+
+
+
+                                <div class="text-center">
+                                    <input type="submit" value="Log In" class="btn btn-outline-dark" />
+                                    <a class="btn btn-outline-dark" asp-controller="Account"
+                                       asp-action="Register">Not yet a member</a>
+
+                                    @*<a type="button" class="btn purple-gradient btn-lg" asp-controller="Account" asp-action="Register">Sign Up!</a>*@
+
+                                    <hr>
+                                    <div class="inline-ul text-center d-flex justify-content-center">
+                                        <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-twitter white-text"></i></a>
+                                        <a class="p-2 m-2 fa-lg li-ic"><i class="fab fa-linkedin-in white-text"> </i></a>
+                                        <a class="p-2 m-2 fa-lg ins-ic"><i class="fab fa-instagram white-text"> </i></a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <!--/Form with header-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
